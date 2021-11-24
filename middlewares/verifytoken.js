@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const authenticate = (req, res, next) =>{
     const token = req.header("token");
     try{
-        const secretKey = "tkb@2511";
+        const secretKey = "ACCESS_TOKEN_SECRET";
         const decode = jwt.verify(token,secretKey);
         req.user = decode; //xét thêm key mới cho decode
         next();

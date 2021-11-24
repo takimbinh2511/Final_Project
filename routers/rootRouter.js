@@ -7,9 +7,9 @@ const rootRouter = Router();
 
 rootRouter.use("/admin",userRouter);
 
-rootRouter.use("",authRouter);
+rootRouter.use("", authRouter);
 
-rootRouter.use("/customer",customerRouter);
+rootRouter.use("/customer", customerRouter);
 
 module.exports={
     rootRouter,
