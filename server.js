@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 // reacts ko call api
-// app.use(cors());
+app.use(cors());
 
 // middleware: body-parser
 app.use(express.urlencoded({ extended: false }));
