@@ -52,14 +52,20 @@ const removeUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = req.body;
-    await User.update(data, {
-      where: {
-        id,
-      },
+   const {id}= req.params;
+   const {email, password, role} = req.body;
+   const salt = bcryptjs.genSaltSync(10);
+    // 2. mã hóa password + salt
+    const hashPassword = bcryptjs.hashSync(password, salt);
+    const newUser = await User.findByIdAndUpdate(id,
+    {
+      email,
+      password: hashPassword,
+      role
     });
-    res.status(200).send("cập nhật người dùng");
+  
+    console.log(newUser);
+    res.send("Cập nhật thành công");
   } catch (error) {
     res.status(500).send(error);
   }
